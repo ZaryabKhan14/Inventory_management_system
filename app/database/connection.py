@@ -1,9 +1,9 @@
 import mysql.connector
-from settings import Settings
+from app.database.settings import Settings
 
 class DatabaseConnection:
 
-    def connection():
+    def connection(self):
 
 
         try:
@@ -18,9 +18,9 @@ class DatabaseConnection:
                 cursor.execute("SELECT DATABASE();")
                 print("Connected to database:", cursor.fetchone())
 
-                cursor.close()
-                mydb.close()
+                # cursor.close()
+                # mydb.close()
+                return mydb
 
         except mysql.connector.Error as err:
             print("❌ Connection failed:", err)
-DatabaseConnection.connection()

@@ -1,6 +1,6 @@
 class Category:
 
-    def __init__(self,category_id,category_name,category_description,category_status,created_at,updated_at):
+    def __init__(self,category_name,category_description,category_status,created_at=None,updated_at=None,category_id=None):
 
         self.category_id = category_id
         self.category_name = category_name
