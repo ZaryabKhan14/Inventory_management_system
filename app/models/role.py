@@ -4,7 +4,7 @@ class Role:
 
         self.role_id = role_id
         self.role_name = role_name
-        self.description = role_description
+        self.role_description = role_description
         self.status = status
         self.created_at = created_at
         self.updated_at = updated_at
