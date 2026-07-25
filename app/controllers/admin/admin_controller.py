@@ -1,15 +1,18 @@
+from app.controllers.user.User_controlller import UserController
+
 class AdminContoller:
 
     def __init__(self,user):
 
         self.user = user
+        self.user_controller = UserController()
 
     def admin_dashboard(self):
 
         while True:
 
             print("\n===== ADMIN DASHBOARD =====")
-            print("1. User Management")
+            print("1. Add User")
             print("2. Category Management")
             print("3. Product Management")
             print("4. Supplier Management")
@@ -22,7 +25,8 @@ class AdminContoller:
             choice = input("Enter Choice : ")
 
             if choice == "1":
-                print("User Module")
+                self.user_controller.add_user()
+                
 
             elif choice == "2":
                 print("Category Module")

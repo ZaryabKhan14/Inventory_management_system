@@ -1,5 +1,5 @@
 from app.models.category import Category
-from app.services.Category_Service import CategoryService
+from app.services.category_service.Category_Service import CategoryService
 import app.utils.helper
 
 class Category_Controller():

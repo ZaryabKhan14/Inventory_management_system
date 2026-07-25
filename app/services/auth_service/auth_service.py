@@ -1,4 +1,4 @@
-from app.repositories.auth_repository import AuthRepository
+from app.repositories.auth_repository.auth_repository import AuthRepository
 
 class AuthService():
 

@@ -1,7 +1,7 @@
-from app.services.auth_service import AuthService
+from app.services.auth_service.auth_service import AuthService
 import app.utils.helper
-from app.controllers.admin_controller import AdminContoller
-from app.controllers.manager_controller import ManaagerController
+from app.controllers.admin.admin_controller import AdminContoller
+from app.controllers.manager.manager_controller import ManaagerController
 
 class AuthController():
 

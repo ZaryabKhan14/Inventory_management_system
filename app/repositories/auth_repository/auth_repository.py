@@ -52,46 +52,32 @@ class AuthRepository:
 
             return None
 
+        import app.models.users as u_module
+        print("DEBUG - Users file location:", u_module.__file__)
+
         role = Role(
 
-        row["role_id"],
-
-        row["role_name"],
-
-        row["role_description"],
-
-        row["role_status"],
-
-        row["role_created_at"],
-
-        row["role_updated_at"]
+            role_id=row["role_id"],
+            role_name=row["role_name"],
+            role_description=row["role_description"],
+            status=row["role_status"],
+            created_at=row["role_created_at"],
+            updated_at=row["role_updated_at"]
 
     )
 
         user = Users(
-
-            row["user_id"],
-
-            row["user_first_name"],
-
-            row["user_last_name"],
-
-            row["user_name"],
-
-            row["user_email"],
-
-            row["user_phone_number"],
-
-            row["user_password"],
-
-            role,
-
-            row["user_status"],
-
-            row["created_at"],
-
-            row["updated_at"]
-
+            user_first_name=row["user_first_name"],
+            user_last_name=row["user_last_name"],
+            user_name=row["user_name"],
+            user_email=row["user_email"],
+            user_phone_number=row["user_phone_number"],
+            user_password=row["user_password"],
+            role=role,
+            user_status=row["user_status"],
+            user_id=row["user_id"],
+            created_at=row["created_at"],
+            updated_at=row["updated_at"]
         )
 
 

@@ -1,5 +1,5 @@
-from app.controllers.category_controller import Category_Controller
-from app.controllers.auth_controller import AuthController
+from app.controllers.category.category_controller import Category_Controller
+from app.controllers.auth.auth_controller import AuthController
 import app.utils.helper 
 
 
@@ -10,13 +10,5 @@ status = True
 
 while status:
 
-    print("Main Menu")
+    auth_controller.login()
 
-    print("1 : Add Category")
-
-    user_choice = app.utils.helper.get_input_choice("Select Your Option : " , [1])
-
-    match user_choice:
-
-        case 1:
-            auth_controller.login()
