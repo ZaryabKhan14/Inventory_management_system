@@ -1,8 +1,10 @@
 from app.controllers.category_controller import Category_Controller
+from app.controllers.auth_controller import AuthController
 import app.utils.helper 
 
 
 controller = Category_Controller()
+auth_controller = AuthController()
 
 status = True
 
@@ -17,5 +19,4 @@ while status:
     match user_choice:
 
         case 1:
-            controller.add_category()
-
+            auth_controller.login()
