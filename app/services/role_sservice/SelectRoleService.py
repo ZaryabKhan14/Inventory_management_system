@@ -7,6 +7,6 @@ class SelectRoleService:
 
         self.add_user_reposiotry = SelectRoleRepository()
 
-    def add_user(self):
+    def role_fetch(self):
 
         return self.add_user_reposiotry.fetch_all_roles()

@@ -1,6 +1,6 @@
 from app.services.auth_service.auth_service import AuthService
 import app.utils.helper
-from app.controllers.admin.admin_controller import AdminContoller
+from app.controllers.admin_dashboard.admin_controller import AdminController
 from app.controllers.manager.manager_controller import ManaagerController
 
 class AuthController():
@@ -27,7 +27,7 @@ class AuthController():
             print(f"\nWelcome {user.user_first_name}")
 
             if user.role.role_name == "Admin":
-                AdminContoller(user).admin_dashboard()
+                AdminController(user).admin_dashboard()
 
             elif user.role.role_name == "Manager":
                 ManaagerController(user).manager_dashboard()
