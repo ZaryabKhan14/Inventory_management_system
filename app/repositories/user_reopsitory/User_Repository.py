@@ -1,11 +1,12 @@
 from app.database.connection import DatabaseConnection
 from app.models.users import Users
+import logging
 
 class UserRepository:
 
-    def __init__(self):
-        # self.user = Users()
-        pass
+    # def __init__(self):
+    #     # self.user = Users()
+    #     pass
 
     def insert_add_user(self,user):
 
@@ -49,7 +50,6 @@ class UserRepository:
         
         database_connection.close()
 
-
         for row in user:
 
             users_data = Users(
@@ -80,7 +80,6 @@ class UserRepository:
 
         select_user_query = "Select u.user_id,u.user_first_name,u.user_last_name,u.user_name,u.user_email,u.user_phone_number,u.user_password,u.role_id,r.role_name,u.user_status,u.created_at,u.updated_at FROM users u INNER JOIN roles r ON u.role_id = r.role_id where u.user_id = %s;"
 
-
         cursor.execute(select_user_query,(user_id,))
 
         user_by_id = cursor.fetchone()
@@ -102,17 +101,82 @@ class UserRepository:
                         user_status=user_by_id["user_status"],
                         created_at=user_by_id["created_at"],
                         updated_at=user_by_id["updated_at"]
-                        )
-
-        
+                        )  
 
         return user_Data
 
 
+    def update_user(self,user_data,user_id):
 
+        try:
 
-        
+            self.logger = logging.getLogger(__name__)
 
+            database_connection = DatabaseConnection().connection()
 
+            cursor = database_connection.cursor()
 
+            update_query = "UPDATE users SET user_first_name = %s ,user_last_name = %s,user_name = %s,user_email = %s,user_phone_number = %s,user_password = %s,role_id = %s,user_status = %s,updated_at = NOW() WHERE user_id = %s;"
 
+            update_data = (user_data.user_first_name,
+                            user_data.user_last_name,
+                            user_data.user_name,
+                            user_data.user_email,
+                            user_data.user_phone_number,
+                            user_data.user_password,
+                            user_data.role,  # Selected role ID
+                            user_data.user_status,
+                            user_id
+                            )
+
+            cursor.execute(update_query,update_data)
+
+            database_connection.commit()
+
+            self.logger.info(f"User {user_id} updated successfully")
+            return True
+
+        except Exception as e:
+
+            self.logger.error(f"Failed to update user {user_id}: {e}")
+            return e
+
+        finally:
+            if cursor:
+                cursor.close()
+            if database_connection:
+                database_connection.close()
+                
+
+    def delete_user(self,user_id):
+
+        try:
+
+            self.logger = logging.getLogger(__name__)
+
+            database_connection = DatabaseConnection().connection()
+
+            cursor = database_connection.cursor()
+
+            sql_query = "DELETE FROM users WHERE user_id = %s;"
+
+            value = (user_id,)
+
+            cursor.execute(sql_query,value)
+
+            database_connection.commit()
+
+            self.logger.info(f"User {user_id} Delete successfully")
+            return True
+
+        except Exception as e:
+
+            self.logger.error(f"Failed to Delete user {user_id}: {e}")
+            return e
+
+        finally:
+            if cursor:
+                cursor.close()
+
+            if database_connection:
+                database_connection.close()

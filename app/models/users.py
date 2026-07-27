@@ -1,7 +1,6 @@
 from app.models.role import Role
 class Users:
 
-
     def __init__(self,user_first_name,user_last_name,user_name,user_email,user_phone_number,user_password,role,user_status,created_at=None,updated_at=None,user_id=None,role_name = None):
 
         self.user_id = user_id

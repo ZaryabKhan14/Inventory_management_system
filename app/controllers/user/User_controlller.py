@@ -35,7 +35,6 @@ class UserController:
                 print(f"{role.role_id} : {role.role_name}")
                 valid_role_ids.append(role.role_id)  # e.g., [1, 2]
 
-            
             selected_role_id = get_input_choice("Select User Role : ",valid_role_ids)
 
             # user_status = get_input_string("Enter User Status : ")
@@ -47,7 +46,6 @@ class UserController:
 
             user_status = "Active" if status == 1 else "Inactive"
 
-
             selected_role = next((r for r in roles if r.role_id == selected_role_id), None)
 
             if selected_role is None:
@@ -56,18 +54,13 @@ class UserController:
         
             print(f"\nSelected Role: {selected_role.role_name} (ID: {selected_role.role_id})")
 
-
             insert_user = Users(user_first_name=user_first_name,user_last_name=user_last_name,user_name=user_name,user_email=user_email,user_phone_number=user_phone_number,user_password=user_password,role=selected_role_id,user_status=user_status)
 
             self.user_service.add_user_service(insert_user)
 
-
         except Exception as e:
 
             print(f"Error : {e}")
-
-
-
 
 
     def view_users(self):
@@ -76,7 +69,6 @@ class UserController:
         print("              ALL USERS")
         print("=" * 50)
 
-        
         users = self.user_service.fetch_user_data()
 
         if not users:
@@ -101,7 +93,6 @@ class UserController:
             print("-" * 50)
 
 
-
     def update_user(self):
 
         print("\n" + "=" * 50)
@@ -110,14 +101,11 @@ class UserController:
 
         user_id = get_input_string("Enter User ID : ")
 
-
         user_data_by_id = self.user_service.fetch_user_by_id(user_id=user_id)
 
         if not user_data_by_id:
             print("\nNo Users Found.")
             return
-
-
         
         print(f"User ID           : {user_data_by_id.user_id}")
         print(f"First Name        : {user_data_by_id.user_first_name}")
@@ -132,7 +120,97 @@ class UserController:
         print(f"Updated At        : {user_data_by_id.updated_at}")
         print("-" * 50)
 
+
+        confirm = get_input_string("do you want to edit? (yes/no) : ")
+
+        if confirm.strip().lower() in ["yes","y"] :
+
+            user_first_name = get_input_string("Enter First Name : ")
+            user_last_name = get_input_string("Enter Last Name : ")
+            user_name = get_input_string("Enter User Name : ")
+            user_email = get_input_string("Enter User Email : ")
+            user_phone_number = get_input_string("Enter Phone Number : ")
+            user_password = get_input_string("Enter User Password : ")
+
+            roles = self.role_service.role_fetch()
+
+            print("\n--- SELECT USER ROLE ---")
+
+            valid_roles_ids = []
+
+            for role in roles:
+
+                print(f"{role.role_id} : {role.role_name}")
+                valid_roles_ids.append(role.role_id)
+
+            selected_role_id = get_input_choice("Select User Role : ",valid_roles_ids)
+
+            print("1. Active")
+            print("2. Inactive")
+
+            status = get_input_choice("Select Status : ", [1, 2])
+
+            user_status = "Active" if status == 1 else "Inactive"
+
+
+            selected_role = next((r for r in roles if r.role_id == selected_role_id), None)
+
+            if selected_role is None:
+                print("Invalid Role Selected")
+                return
         
+            print(f"\nSelected Role: {selected_role.role_name} (ID: {selected_role.role_id})")
 
 
-          
+            if not user_data_by_id:
+                        print("\nNo Users Found.")
+                        return
+
+            update_user = Users(user_first_name=user_first_name,user_last_name=user_last_name,user_name=user_name,user_email=user_email,user_phone_number=user_phone_number,user_password=user_password,role=selected_role_id,user_status=user_status)
+
+            self.user_service.update_user_service(update_user,user_id=user_id)
+
+            print("\nUser Updated Successfully!")
+        else:
+            print("\nUpdate Cancelled.")
+
+
+
+    def delete_user(self):
+
+        print("\n" + "=" * 50)
+        print("              Delete USERS")
+        print("=" * 50)
+
+        user_id = get_input_string("Enter User ID : ")
+
+        fetch_user_data_by_id = self.user_service.fetch_user_by_id(user_id=user_id)
+
+        if not fetch_user_data_by_id:
+            print("\nNo Users Found.")
+            return
+        
+        print(f"User ID           : {fetch_user_data_by_id.user_id}")
+        print(f"First Name        : {fetch_user_data_by_id.user_first_name}")
+        print(f"Last Name         : {fetch_user_data_by_id.user_last_name}")
+        print(f"Username          : {fetch_user_data_by_id.user_name}")
+        print(f"Email             : {fetch_user_data_by_id.user_email}")
+        print(f"Phone Number      : {fetch_user_data_by_id.user_phone_number}")
+        print(f"Role ID           : {fetch_user_data_by_id.role}")
+        print(f"Role Name         : {fetch_user_data_by_id.role_name}")
+        print(f"Status            : {fetch_user_data_by_id.user_status}")
+        print(f"Created At        : {fetch_user_data_by_id.created_at}")
+        print(f"Updated At        : {fetch_user_data_by_id.updated_at}")
+        print("-" * 50)
+
+
+        confirmation = get_input_string("Are You Sure You Want to delete (yes/no) :")
+
+        if confirmation.strip().lower() in ["yes", "y"]:
+            try:
+                self.user_service.delete_user_service(user_id=user_id)
+                print("\nUser deleted successfully!")
+            except Exception:
+                print("\nFailed to delete user. Please try again.")
+        else:
+            print("\nDeletion cancelled.")
