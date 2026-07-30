@@ -1,0 +1,41 @@
+2026-07-30 21:09:18 | [inser_user] | INFO | SUCCESS: add_user_service returned None
+2026-07-30 21:11:37 | [Fetch_user] | INFO | SUCCESS: fetch_user_data returned [<app.models.users.Users object at 0x10a44c190>, <app.models.users.Users object at 0x10a44c690>]
+2026-07-30 21:29:52 | [USERS] | ERROR | FAILED: fetch_user_by_id - Error: 'NoneType' object is not subscriptable
+Traceback (most recent call last):
+  File "/Users/muhammadzaryabkhan/Desktop/inventory_management_system_python/app/utils/logger/custom_logger.py", line 30, in wrapper
+    result = funct(*args, **kwargs)
+  File "/Users/muhammadzaryabkhan/Desktop/inventory_management_system_python/app/services/user_service/UserService.py", line 63, in fetch_user_by_id
+    raise e
+  File "/Users/muhammadzaryabkhan/Desktop/inventory_management_system_python/app/services/user_service/UserService.py", line 52, in fetch_user_by_id
+    users = self.user_repository.fetch_user_by_id(user_id)
+  File "/Users/muhammadzaryabkhan/Desktop/inventory_management_system_python/app/repositories/user_reopsitory/User_Repository.py", line 92, in fetch_user_by_id
+    user_id=user_by_id["user_id"],
+            ~~~~~~~~~~^^^^^^^^^^^
+TypeError: 'NoneType' object is not subscriptable
+2026-07-30 21:36:15 | [USERS] | INFO | SUCCESS: fetch_user_by_id returned None
+2026-07-30 21:38:05 | [USERS] | INFO | SUCCESS: fetch_user_by_id returned None
+2026-07-30 21:51:30 | [USERS] | ERROR | FAILED: fetch_user_by_id - Error: 'NoneType' object is not subscriptable
+Traceback (most recent call last):
+  File "/Users/muhammadzaryabkhan/Desktop/inventory_management_system_python/app/utils/logger/custom_logger.py", line 30, in wrapper
+    result = funct(*args, **kwargs)
+  File "/Users/muhammadzaryabkhan/Desktop/inventory_management_system_python/app/services/user_service/UserService.py", line 68, in fetch_user_by_id
+    raise e
+  File "/Users/muhammadzaryabkhan/Desktop/inventory_management_system_python/app/services/user_service/UserService.py", line 52, in fetch_user_by_id
+    users = self.user_repository.fetch_user_by_id(user_id)
+  File "/Users/muhammadzaryabkhan/Desktop/inventory_management_system_python/app/repositories/user_reopsitory/User_Repository.py", line 94, in fetch_user_by_id
+    user_id=user_by_id["user_id"],
+            ~~~~~~~~~~^^^^^^^^^^^
+TypeError: 'NoneType' object is not subscriptable
+2026-07-30 21:53:06 | [USERS] | ERROR | FAILED: fetch_user_by_id - Error: 'NoneType' object is not subscriptable
+Traceback (most recent call last):
+  File "/Users/muhammadzaryabkhan/Desktop/inventory_management_system_python/app/utils/logger/custom_logger.py", line 30, in wrapper
+    result = funct(*args, **kwargs)
+  File "/Users/muhammadzaryabkhan/Desktop/inventory_management_system_python/app/services/user_service/UserService.py", line 68, in fetch_user_by_id
+    raise e
+  File "/Users/muhammadzaryabkhan/Desktop/inventory_management_system_python/app/services/user_service/UserService.py", line 52, in fetch_user_by_id
+    users = self.user_repository.fetch_user_by_id(user_id)
+  File "/Users/muhammadzaryabkhan/Desktop/inventory_management_system_python/app/repositories/user_reopsitory/User_Repository.py", line 94, in fetch_user_by_id
+    user_id=user_by_id["user_id"],
+            ~~~~~~~~~~^^^^^^^^^^^
+TypeError: 'NoneType' object is not subscriptable
+2026-07-30 21:53:56 | [USERS] | INFO | SUCCESS: fetch_user_by_id returned None

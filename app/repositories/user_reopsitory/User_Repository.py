@@ -74,43 +74,51 @@ class UserRepository:
 
     def fetch_user_by_id(self,user_id):
 
-        conection = DatabaseConnection().connection()
+        try:
 
-        cursor = conection.cursor(dictionary=True)
+            conection = DatabaseConnection().connection()
 
-        select_user_query = "Select u.user_id,u.user_first_name,u.user_last_name,u.user_name,u.user_email,u.user_phone_number,u.user_password,u.role_id,r.role_name,u.user_status,u.created_at,u.updated_at FROM users u INNER JOIN roles r ON u.role_id = r.role_id where u.user_id = %s;"
+            cursor = conection.cursor(dictionary=True)
 
-        cursor.execute(select_user_query,(user_id,))
+            select_user_query = "Select u.user_id,u.user_first_name,u.user_last_name,u.user_name,u.user_email,u.user_phone_number,u.user_password,u.role_id,r.role_name,u.user_status,u.created_at,u.updated_at FROM users u INNER JOIN roles r ON u.role_id = r.role_id where u.user_id = %s;"
 
-        user_by_id = cursor.fetchone()
+            cursor.execute(select_user_query,(user_id,))
 
-        cursor.close()
+            user_by_id = cursor.fetchone()
 
-        conection.close()
+            if not user_by_id:
+                print(f"User with ID {user_by_id} not found.")
+                return None
+            
+            user_Data = Users(
+                        user_id=user_by_id["user_id"],
+                            user_first_name=user_by_id["user_first_name"],
+                            user_last_name=user_by_id["user_last_name"],
+                            user_name=user_by_id["user_name"],
+                            user_email=user_by_id["user_email"],
+                            user_phone_number=user_by_id["user_phone_number"],
+                            user_password=user_by_id["user_password"],
+                            role=user_by_id["role_id"],
+                            role_name=user_by_id["role_name"],
+                            user_status=user_by_id["user_status"],
+                            created_at=user_by_id["created_at"],
+                            updated_at=user_by_id["updated_at"]
+                            )  
 
-        user_Data = Users(
-                       user_id=user_by_id["user_id"],
-                        user_first_name=user_by_id["user_first_name"],
-                        user_last_name=user_by_id["user_last_name"],
-                        user_name=user_by_id["user_name"],
-                        user_email=user_by_id["user_email"],
-                        user_phone_number=user_by_id["user_phone_number"],
-                        user_password=user_by_id["user_password"],
-                        role=user_by_id["role_id"],
-                        role_name=user_by_id["role_name"],
-                        user_status=user_by_id["user_status"],
-                        created_at=user_by_id["created_at"],
-                        updated_at=user_by_id["updated_at"]
-                        )  
+            return user_Data
 
-        return user_Data
+        finally:
+            if cursor:
+
+                cursor.close()
+            if conection:
+                
+                conection.close()
 
 
     def update_user(self,user_data,user_id):
 
         try:
-
-            self.logger = logging.getLogger(__name__)
 
             database_connection = DatabaseConnection().connection()
 
@@ -118,6 +126,10 @@ class UserRepository:
 
             update_query = "UPDATE users SET user_first_name = %s ,user_last_name = %s,user_name = %s,user_email = %s,user_phone_number = %s,user_password = %s,role_id = %s,user_status = %s,updated_at = NOW() WHERE user_id = %s;"
 
+            if cursor.rowcount == 0:
+                print(f"User with ID {user_id} not found in database.")
+                return False
+            
             update_data = (user_data.user_first_name,
                             user_data.user_last_name,
                             user_data.user_name,
@@ -133,14 +145,14 @@ class UserRepository:
 
             database_connection.commit()
 
-            self.logger.info(f"User {user_id} updated successfully")
             return True
 
+
         except Exception as e:
-
-            self.logger.error(f"Failed to update user {user_id}: {e}")
-            return e
-
+            if database_connection:
+                database_connection.rollback()  
+            raise e
+        
         finally:
             if cursor:
                 cursor.close()
@@ -152,7 +164,6 @@ class UserRepository:
 
         try:
 
-            self.logger = logging.getLogger(__name__)
 
             database_connection = DatabaseConnection().connection()
 
@@ -169,10 +180,6 @@ class UserRepository:
             self.logger.info(f"User {user_id} Delete successfully")
             return True
 
-        except Exception as e:
-
-            self.logger.error(f"Failed to Delete user {user_id}: {e}")
-            return e
 
         finally:
             if cursor:
