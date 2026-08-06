@@ -39,3 +39,6 @@ Traceback (most recent call last):
             ~~~~~~~~~~^^^^^^^^^^^
 TypeError: 'NoneType' object is not subscriptable
 2026-07-30 21:53:56 | [USERS] | INFO | SUCCESS: fetch_user_by_id returned None
+2026-08-06 21:06:45 | [Category] | INFO | SUCCESS: show_category returned [<app.models.category.Category object at 0x10a15bb60>]
+2026-08-06 21:07:47 | [Category] | INFO | SUCCESS: show_category returned [<app.models.category.Category object at 0x10a404190>]
+2026-08-06 21:08:01 | [Category] | INFO | SUCCESS: show_category returned [<app.models.category.Category object at 0x107e8bb60>]

@@ -18,7 +18,7 @@ class Logger:
 
             def wrapper(*args, **kwargs):
 
-                Logger = logging.getLogger(module_name)
+                logger = logging.getLogger(module_name)
 
                 args_repr = [repr(a) for a in args]
 
@@ -28,10 +28,10 @@ class Logger:
 
                 try:
                     result = funct(*args, **kwargs)
-                    Logger.info(f"SUCCESS: {funct.__name__} returned {result}")
+                    logger.info(f"SUCCESS: {funct.__name__} returned {result}")
                     return result
                 except Exception as e:
-                    Logger.error(f"FAILED: {funct.__name__} - Error: {str(e)}", exc_info=True)
+                    logger.error(f"FAILED: {funct.__name__} - Error: {str(e)}", exc_info=True)
                     raise
                     
             return wrapper

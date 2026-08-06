@@ -27,3 +27,28 @@ class Category_Controller():
         category = Category(category_name=category_name,category_description=category_description,category_status=category_status)
 
         self.service.add_category(category)
+
+
+    def view_categories(self):
+
+        print("\n" + "=" * 50)
+        print("              ALL Category")
+        print("=" * 50)
+
+
+        categories = self.service.show_category()
+
+        if not categories:
+            print("\nNo Category Found.")
+            return
+
+
+        for category in categories:
+
+            print(f"Category ID             : {category.category_id}")
+            print(f"Category Name           : {category.category_name}")
+            print(f"Category Description    : {category.category_description}")
+            print(f"Category Status         : {category.category_status}")
+            print(f"Category Created At     : {category.created_at}")
+            print(f"Category Update At      : {category.updated_at}")
+            print("-" * 50)
