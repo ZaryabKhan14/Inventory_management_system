@@ -28,3 +28,42 @@ class CategoryService():
             # print(f"Data Fetch Failed : {e}")
 
             raise 
+
+
+    @Logger.log_activity(module_name="Category")
+    def show_category_by_id(self,category_id):
+
+        try:
+
+            category_by_id = self.repository.category_by_id(category_id)
+
+            print("User Fetch Successfully")
+
+            return category_by_id
+
+        except Exception as e:
+
+            print(f"Failed to fetch category {category_id}: {e}")
+
+            raise e
+
+
+    @Logger.log_activity(module_name="Category")
+    def update_category(self,category_data,category_id):
+
+        try:
+            category_data = self.repository.update_category(category_data,category_id)
+
+            if category_data is None:
+                return None
+
+            print(f"Category {category_id} updated successfully")
+
+
+            return category_data
+
+        except Exception as e:
+
+            print(f"Failed to update category {category_id}: {e}")
+
+            raise e

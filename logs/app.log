@@ -42,3 +42,70 @@ TypeError: 'NoneType' object is not subscriptable
 2026-08-06 21:06:45 | [Category] | INFO | SUCCESS: show_category returned [<app.models.category.Category object at 0x10a15bb60>]
 2026-08-06 21:07:47 | [Category] | INFO | SUCCESS: show_category returned [<app.models.category.Category object at 0x10a404190>]
 2026-08-06 21:08:01 | [Category] | INFO | SUCCESS: show_category returned [<app.models.category.Category object at 0x107e8bb60>]
+2026-08-07 18:45:42 | [Category] | ERROR | FAILED: show_category_by_id - Error: CategoryRepository.show_category() takes 1 positional argument but 2 were given
+Traceback (most recent call last):
+  File "/Users/muhammadzaryabkhan/Desktop/inventory_management_system_python/app/utils/logger/custom_logger.py", line 30, in wrapper
+    result = funct(*args, **kwargs)
+  File "/Users/muhammadzaryabkhan/Desktop/inventory_management_system_python/app/services/category_service/Category_Service.py", line 38, in show_category_by_id
+    category_by_id = self.repository.show_category(category_id)
+TypeError: CategoryRepository.show_category() takes 1 positional argument but 2 were given
+2026-08-07 18:46:36 | [Category] | INFO | SUCCESS: show_category returned [<app.models.category.Category object at 0x106533b60>]
+2026-08-07 18:46:41 | [Category] | ERROR | FAILED: show_category_by_id - Error: CategoryRepository.show_category() takes 1 positional argument but 2 were given
+Traceback (most recent call last):
+  File "/Users/muhammadzaryabkhan/Desktop/inventory_management_system_python/app/utils/logger/custom_logger.py", line 30, in wrapper
+    result = funct(*args, **kwargs)
+  File "/Users/muhammadzaryabkhan/Desktop/inventory_management_system_python/app/services/category_service/Category_Service.py", line 38, in show_category_by_id
+    category_by_id = self.repository.show_category(category_id)
+TypeError: CategoryRepository.show_category() takes 1 positional argument but 2 were given
+2026-08-07 18:48:05 | [Category] | ERROR | FAILED: show_category_by_id - Error: CategoryRepository.show_category() takes 1 positional argument but 2 were given
+Traceback (most recent call last):
+  File "/Users/muhammadzaryabkhan/Desktop/inventory_management_system_python/app/utils/logger/custom_logger.py", line 30, in wrapper
+    result = funct(*args, **kwargs)
+  File "/Users/muhammadzaryabkhan/Desktop/inventory_management_system_python/app/services/category_service/Category_Service.py", line 38, in show_category_by_id
+    category_by_id = self.repository.show_category(category_id)
+TypeError: CategoryRepository.show_category() takes 1 positional argument but 2 were given
+2026-08-07 18:52:09 | [Category] | ERROR | FAILED: show_category_by_id - Error: CategoryRepository.show_category() takes 1 positional argument but 2 were given
+Traceback (most recent call last):
+  File "/Users/muhammadzaryabkhan/Desktop/inventory_management_system_python/app/utils/logger/custom_logger.py", line 30, in wrapper
+    result = funct(*args, **kwargs)
+  File "/Users/muhammadzaryabkhan/Desktop/inventory_management_system_python/app/services/category_service/Category_Service.py", line 38, in show_category_by_id
+    category_by_id = self.repository.show_category(category_id)
+TypeError: CategoryRepository.show_category() takes 1 positional argument but 2 were given
+2026-08-07 18:53:15 | [Category] | ERROR | FAILED: show_category_by_id - Error: Could not process parameters: str(1), it must be of type list, tuple or dict
+Traceback (most recent call last):
+  File "/Users/muhammadzaryabkhan/Desktop/inventory_management_system_python/app/utils/logger/custom_logger.py", line 30, in wrapper
+    result = funct(*args, **kwargs)
+  File "/Users/muhammadzaryabkhan/Desktop/inventory_management_system_python/app/services/category_service/Category_Service.py", line 38, in show_category_by_id
+    category_by_id = self.repository.category_by_id(category_id)
+  File "/Users/muhammadzaryabkhan/Desktop/inventory_management_system_python/app/repositories/category_repository/category_repository.py", line 101, in category_by_id
+    cursor.execute(fetch_query,(category_id),)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/muhammadzaryabkhan/Desktop/inventory_management_system_python/myenv/lib/python3.13/site-packages/mysql/connector/cursor_cext.py", line 328, in execute
+    prepared = self._connection.prepare_for_mysql(params)
+  File "/Users/muhammadzaryabkhan/Desktop/inventory_management_system_python/myenv/lib/python3.13/site-packages/mysql/connector/connection_cext.py", line 957, in prepare_for_mysql
+    raise ProgrammingError(
+    ...<2 lines>...
+    )
+mysql.connector.errors.ProgrammingError: Could not process parameters: str(1), it must be of type list, tuple or dict
+2026-08-07 18:54:41 | [Category] | INFO | SUCCESS: show_category_by_id returned [<app.models.category.Category object at 0x1086b7b60>]
+2026-08-07 18:58:38 | [Category] | INFO | SUCCESS: show_category_by_id returned <app.models.category.Category object at 0x106177b60>
+2026-08-07 18:59:04 | [Category] | ERROR | FAILED: update_category - Error: Not enough parameters for the SQL statement
+Traceback (most recent call last):
+  File "/Users/muhammadzaryabkhan/Desktop/inventory_management_system_python/app/utils/logger/custom_logger.py", line 30, in wrapper
+    result = funct(*args, **kwargs)
+  File "/Users/muhammadzaryabkhan/Desktop/inventory_management_system_python/app/services/category_service/Category_Service.py", line 51, in update_category
+    category_data = self.repository.update_category(category_data,category_id)
+  File "/Users/muhammadzaryabkhan/Desktop/inventory_management_system_python/app/repositories/category_repository/category_repository.py", line 150, in update_category
+    cursor.execute(update_query,update_data)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/muhammadzaryabkhan/Desktop/inventory_management_system_python/myenv/lib/python3.13/site-packages/mysql/connector/cursor_cext.py", line 333, in execute
+    stmt = RE_PY_PARAM.sub(psub, stmt)
+  File "/Users/muhammadzaryabkhan/Desktop/inventory_management_system_python/myenv/lib/python3.13/site-packages/mysql/connector/cursor_cext.py", line 113, in __call__
+    raise ProgrammingError(
+        "Not enough parameters for the SQL statement"
+    ) from None
+mysql.connector.errors.ProgrammingError: Not enough parameters for the SQL statement
+2026-08-07 19:01:21 | [Category] | INFO | SUCCESS: show_category_by_id returned <app.models.category.Category object at 0x108497b60>
+2026-08-07 19:01:36 | [Category] | INFO | SUCCESS: update_category returned True
+2026-08-07 19:05:02 | [Category] | INFO | SUCCESS: show_category_by_id returned <app.models.category.Category object at 0x109bc7b60>
+2026-08-07 19:05:11 | [Category] | INFO | SUCCESS: update_category returned True

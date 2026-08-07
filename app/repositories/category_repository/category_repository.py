@@ -85,5 +85,86 @@ class CategoryRepository():
                 connection.close()
 
 
+    def category_by_id(self,category_id):
+
+        connection = None
+        cursor = None
+
+        try:
+
+            connection = DatabaseConnection().connection()
+
+            cursor = connection.cursor(dictionary=True)
+
+            fetch_query = ("SELECT c.category_id,c.category_name,c.category_description,c.category_status,c.created_at,c.updated_at FROM Category c WHERE c.category_id = %s ")
+
+            cursor.execute(fetch_query,(category_id,))
+
+            category_by_id = cursor.fetchone()
+
+            if not category_by_id:
+                return[]
+
+            rows = Category( category_id=category_by_id['category_id'],
+                                    category_name=category_by_id['category_name'],
+                                    category_description=category_by_id['category_description'],
+                                    category_status=category_by_id['category_status'],
+                                    created_at=category_by_id['created_at'],
+                                    updated_at=category_by_id['updated_at'],
+                                    )
+            
+
+            return rows
+
+        finally:
+
+            if cursor:
+                cursor.close()
+            if connection:
+                connection.close()
+
+
+    def update_category(self,category_data,category_id):
+
+        connection = None
+
+        cursor = None
+
+        try:
+
+            connection = DatabaseConnection().connection()
+
+            cursor = connection.cursor()
+
+            update_query = "UPDATE Category SET category_name = %s , category_description = %s,category_status = %s WHERE category_id = %s"
+
+
+            
+            
+            update_data = [
+                category_data.category_name,
+                category_data.category_description,
+                category_data.category_status,
+                category_id
+            ] 
+
+            cursor.execute(update_query,update_data)
+
+            connection.commit()
+
+            if cursor.rowcount == 0:
+                print(f"User with ID {category_id} not found in database.")
+                return False
+
+            return True
+
+        finally:
+
+            if cursor:
+                cursor.close()
+
+            if connection:
+                connection.close()
+
 
 
