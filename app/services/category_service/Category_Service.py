@@ -67,3 +67,21 @@ class CategoryService():
             print(f"Failed to update category {category_id}: {e}")
 
             raise e
+
+
+    @Logger.log_activity(module_name="Category")
+    def delete_category(self,category_id):
+
+        try:
+
+            delete_category = self.repository.delete_category(category_id)
+
+            print(f"Category {category_id} Deleted successfully")
+
+
+            return delete_category
+
+        except Exception as e:
+
+            print(f"Failed to Deleted user {category_id}: {e}")
+            raise e

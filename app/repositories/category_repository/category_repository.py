@@ -167,4 +167,34 @@ class CategoryRepository():
                 connection.close()
 
 
+    def delete_category(self,category_id):
+
+        connection = None
+
+        cursor = None
+
+        try:
+
+            connection = DatabaseConnection().connection()
+
+            cursor = connection.cursor()
+
+            delete_query = ("Delete FROM category WHERE category_id = %s")
+
+            value = (category_id,)
+
+            cursor.execute(delete_query,value)
+
+            connection.commit()
+
+            return True
+
+        finally:
+            if cursor:
+                cursor.close()
+
+            if connection:
+                connection.close()
+
+
 

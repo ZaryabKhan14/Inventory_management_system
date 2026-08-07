@@ -109,3 +109,49 @@ mysql.connector.errors.ProgrammingError: Not enough parameters for the SQL state
 2026-08-07 19:01:36 | [Category] | INFO | SUCCESS: update_category returned True
 2026-08-07 19:05:02 | [Category] | INFO | SUCCESS: show_category_by_id returned <app.models.category.Category object at 0x109bc7b60>
 2026-08-07 19:05:11 | [Category] | INFO | SUCCESS: update_category returned True
+2026-08-07 20:04:22 | [Category] | ERROR | FAILED: delete_category - Error: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Dlete FROM category WHERE category_id = '1'' at line 1
+Traceback (most recent call last):
+  File "/Users/muhammadzaryabkhan/Desktop/inventory_management_system_python/myenv/lib/python3.13/site-packages/mysql/connector/connection_cext.py", line 772, in cmd_query
+    self._cmysql.query(
+    ~~~~~~~~~~~~~~~~~~^
+        query,
+        ^^^^^^
+    ...<3 lines>...
+        query_attrs=self.query_attrs,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+_mysql_connector.MySQLInterfaceError: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Dlete FROM category WHERE category_id = '1'' at line 1
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/muhammadzaryabkhan/Desktop/inventory_management_system_python/app/utils/logger/custom_logger.py", line 30, in wrapper
+    result = funct(*args, **kwargs)
+  File "/Users/muhammadzaryabkhan/Desktop/inventory_management_system_python/app/services/category_service/Category_Service.py", line 87, in delete_category
+    raise e
+  File "/Users/muhammadzaryabkhan/Desktop/inventory_management_system_python/app/services/category_service/Category_Service.py", line 77, in delete_category
+    delete_category = self.repository.delete_category(category_id)
+  File "/Users/muhammadzaryabkhan/Desktop/inventory_management_system_python/app/repositories/category_repository/category_repository.py", line 186, in delete_category
+    cursor.execute(delete_query,value)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Users/muhammadzaryabkhan/Desktop/inventory_management_system_python/myenv/lib/python3.13/site-packages/mysql/connector/cursor_cext.py", line 353, in execute
+    self._connection.cmd_query(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self._stmt_partition["mappable_stmt"],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        raw_as_string=self._raw_as_string,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/muhammadzaryabkhan/Desktop/inventory_management_system_python/myenv/lib/python3.13/site-packages/mysql/connector/opentelemetry/context_propagation.py", line 97, in wrapper
+    return method(cnx, *args, **kwargs)
+  File "/Users/muhammadzaryabkhan/Desktop/inventory_management_system_python/myenv/lib/python3.13/site-packages/mysql/connector/connection_cext.py", line 781, in cmd_query
+    raise get_mysql_exception(
+        err.errno, msg=err.msg, sqlstate=err.sqlstate
+    ) from err
+mysql.connector.errors.ProgrammingError: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Dlete FROM category WHERE category_id = '1'' at line 1
+2026-08-07 20:04:59 | [Category] | INFO | SUCCESS: delete_category returned True
+2026-08-07 20:08:56 | [Category] | INFO | SUCCESS: delete_category returned True
+2026-08-07 20:09:05 | [Category] | INFO | SUCCESS: show_category returned []

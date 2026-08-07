@@ -103,4 +103,27 @@ class Category_Controller():
             self.service.update_category(category,category_id)
         
         
-    
+    def delete_category(self):
+        
+
+        print("\n" + "=" * 50)
+        print("              Delete Category")
+        print("=" * 50)
+
+        category_id = get_input_string("Enter Category ID : ")
+
+        confirm = get_input_string("do you want to edit? (yes/no) : ")
+        
+        if confirm.strip().lower() in ['yes','y']:
+        
+
+            delete_category = self.service.delete_category(category_id=category_id)
+
+        if not delete_category:
+            print("\nNo Category Found.")
+            return
+
+        return delete_category
+
+       
+            
