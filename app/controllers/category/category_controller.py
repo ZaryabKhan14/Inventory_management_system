@@ -125,5 +125,32 @@ class Category_Controller():
 
         return delete_category
 
+
+    def search_category(self):
+
+        print("\n" + "=" * 50)
+        print("              Search Category")
+        print("=" * 50)
+
+        category_id = get_input_string("Enter Category ID : ")
+
+        sarch_category = self.service.search_category(category_id=category_id)
+
+
+        if not sarch_category:
+            print("\nNo Category Found.")
+            return
+
+        print(f"Category ID             : {sarch_category.category_id}")
+        print(f"Category Name           : {sarch_category.category_name}")
+        print(f"Category Description    : {sarch_category.category_description}")
+        print(f"Category Status         : {sarch_category.category_status}")
+        print(f"Category Created At     : {sarch_category.created_at}")
+        print(f"Category Update At      : {sarch_category.updated_at}")
+        print("-" * 50)
+        
+        return sarch_category
+
+
        
             

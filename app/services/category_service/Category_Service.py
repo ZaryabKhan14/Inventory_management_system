@@ -85,3 +85,24 @@ class CategoryService():
 
             print(f"Failed to Deleted user {category_id}: {e}")
             raise e
+
+
+
+    @Logger.log_activity(module_name="Category")
+    def search_category(self,category_id):
+
+        pass
+
+        try:
+
+            search_category_by_id = self.repository.category_by_id(category_id)
+
+            print(f"Category {category_id} Search successfully")
+
+            return search_category_by_id
+
+        except Exception as e:
+
+            print(f"Failed to Search user {category_id}: {e}")
+            raise e
+                
