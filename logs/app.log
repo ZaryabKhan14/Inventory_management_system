@@ -161,3 +161,61 @@ mysql.connector.errors.ProgrammingError: 1064 (42000): You have an error in your
 2026-08-09 22:12:13 | [Category] | INFO | SUCCESS: search_category returned <app.models.category.Category object at 0x10a347b60>
 2026-08-09 22:12:49 | [Category] | INFO | SUCCESS: search_category returned <app.models.category.Category object at 0x1065d7b60>
 2026-08-09 22:14:05 | [Category] | INFO | SUCCESS: search_category returned <app.models.category.Category object at 0x105ebbb60>
+2026-08-24 23:15:01 | [Login] | INFO | SUCCESS: login returned <app.models.users.Users object at 0x1074e7cb0>
+2026-08-24 23:17:20 | [Login] | INFO | SUCCESS: login returned <app.models.users.Users object at 0x107807cb0>
+2026-08-24 23:19:34 | [Login] | INFO | SUCCESS: login returned <app.models.users.Users object at 0x107367cb0>
+2026-08-24 23:21:47 | [Login] | INFO | SUCCESS: login returned <app.models.users.Users object at 0x10b1c3cb0>
+2026-08-24 23:23:32 | [Supplier_insert] | ERROR | FAILED: insert_supplier - Error: SupplierRepository.insert_supplier() takes 1 positional argument but 2 were given
+Traceback (most recent call last):
+  File "/Users/muhammadzaryabkhan/Desktop/inventory_management_system_python/app/utils/logger/custom_logger.py", line 30, in wrapper
+    result = funct(*args, **kwargs)
+  File "/Users/muhammadzaryabkhan/Desktop/inventory_management_system_python/app/services/Supplier_Service/Supplier_Service.py", line 20, in insert_supplier
+    raise e
+  File "/Users/muhammadzaryabkhan/Desktop/inventory_management_system_python/app/services/Supplier_Service/Supplier_Service.py", line 14, in insert_supplier
+    self.supplier_repository.insert_supplier(supplier_data)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+TypeError: SupplierRepository.insert_supplier() takes 1 positional argument but 2 were given
+2026-08-24 23:25:20 | [Login] | INFO | SUCCESS: login returned <app.models.users.Users object at 0x10b07fcb0>
+2026-08-24 23:25:40 | [Supplier_insert] | ERROR | FAILED: insert_supplier - Error: type object 'Supplier' has no attribute 'supplier_name'
+Traceback (most recent call last):
+  File "/Users/muhammadzaryabkhan/Desktop/inventory_management_system_python/app/utils/logger/custom_logger.py", line 30, in wrapper
+    result = funct(*args, **kwargs)
+  File "/Users/muhammadzaryabkhan/Desktop/inventory_management_system_python/app/services/Supplier_Service/Supplier_Service.py", line 20, in insert_supplier
+    raise e
+  File "/Users/muhammadzaryabkhan/Desktop/inventory_management_system_python/app/services/Supplier_Service/Supplier_Service.py", line 14, in insert_supplier
+    self.supplier_repository.insert_supplier(supplier_data)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/muhammadzaryabkhan/Desktop/inventory_management_system_python/app/repositories/supplier_repository/Supplier_Reposiotry.py", line 20, in insert_supplier
+    supplier_Data = (Supplier.supplier_name,Supplier.supplier_contact,Supplier.supplier_email,Supplier.supplier_address,Supplier.supplier_description,Supplier.supplier_status)
+                     ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: type object 'Supplier' has no attribute 'supplier_name'
+2026-08-24 23:30:26 | [Login] | INFO | SUCCESS: login returned <app.models.users.Users object at 0x107403cb0>
+2026-08-24 23:30:47 | [Supplier_insert] | ERROR | FAILED: insert_supplier - Error: type object 'Supplier' has no attribute 'supplier_name'
+Traceback (most recent call last):
+  File "/Users/muhammadzaryabkhan/Desktop/inventory_management_system_python/app/utils/logger/custom_logger.py", line 30, in wrapper
+    result = funct(*args, **kwargs)
+  File "/Users/muhammadzaryabkhan/Desktop/inventory_management_system_python/app/services/Supplier_Service/Supplier_Service.py", line 20, in insert_supplier
+    raise e
+  File "/Users/muhammadzaryabkhan/Desktop/inventory_management_system_python/app/services/Supplier_Service/Supplier_Service.py", line 14, in insert_supplier
+    self.supplier_repository.insert_supplier(supplier_data)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/muhammadzaryabkhan/Desktop/inventory_management_system_python/app/repositories/supplier_repository/Supplier_Reposiotry.py", line 20, in insert_supplier
+    supplier_Data = (Supplier.supplier_name,Supplier.supplier_contact,Supplier.supplier_email,Supplier.supplier_address,Supplier.supplier_description,Supplier.supplier_status)
+                     ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: type object 'Supplier' has no attribute 'supplier_name'
+2026-08-24 23:31:49 | [Login] | INFO | SUCCESS: login returned <app.models.users.Users object at 0x1092c3cb0>
+2026-08-24 23:32:12 | [Supplier_insert] | ERROR | FAILED: insert_supplier - Error: 'dict' object has no attribute 'supplier_name'
+Traceback (most recent call last):
+  File "/Users/muhammadzaryabkhan/Desktop/inventory_management_system_python/app/utils/logger/custom_logger.py", line 30, in wrapper
+    result = funct(*args, **kwargs)
+  File "/Users/muhammadzaryabkhan/Desktop/inventory_management_system_python/app/services/Supplier_Service/Supplier_Service.py", line 20, in insert_supplier
+    raise e
+  File "/Users/muhammadzaryabkhan/Desktop/inventory_management_system_python/app/services/Supplier_Service/Supplier_Service.py", line 14, in insert_supplier
+    self.supplier_repository.insert_supplier(supplier_data)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/muhammadzaryabkhan/Desktop/inventory_management_system_python/app/repositories/supplier_repository/Supplier_Reposiotry.py", line 20, in insert_supplier
+    supplier_Data = (supplier_Data.supplier_name,supplier_Data.supplier_contact,supplier_Data.supplier_email,supplier_Data.supplier_address,supplier_Data.supplier_description,supplier_Data.supplier_status)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'dict' object has no attribute 'supplier_name'
+2026-08-24 23:33:09 | [Login] | INFO | SUCCESS: login returned <app.models.users.Users object at 0x10aee7cb0>
+2026-08-24 23:33:58 | [Supplier_insert] | INFO | SUCCESS: insert_supplier returned None

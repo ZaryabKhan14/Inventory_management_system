@@ -6,6 +6,7 @@ from app.controllers.category.category_controller import Category_Controller
 # from app.controllers.purchase.purchase_controller import PurchaseController
 # from app.controllers.sales.sales_controller import SalesController
 # from app.controllers.report.report_controller import ReportController
+from app.controllers.supplier.Supplier_Controller import SupplierController
 
 
 class AdminController:
@@ -17,7 +18,7 @@ class AdminController:
         self.user_controller = UserController()
         self.category_controller = Category_Controller()
         # self.product_controller = ProductController()
-        # self.supplier_controller = SupplierController()
+        self.supplier_controller = SupplierController()
         # self.customer_controller = CustomerController()
         # self.purchase_controller = PurchaseController()
         # self.sales_controller = SalesController()
@@ -141,7 +142,43 @@ class AdminController:
                 # SUPPLIER MANAGEMENT
                 # ===========================
                 case "4":
-                    print("\nSupplier Module Coming Soon...")
+                    while True:
+
+                        print("\n====================================")
+                        print("      Supplier MANAGEMENT")
+                        print("====================================")
+
+                        print("1. Add Supplier")
+                        print("2. View Supplier")
+                        print("3. Update Supplier")
+                        print("4. Delete Supplier")
+                        print("5. Search Supplier")
+                        print("6. Back")
+
+                        sub_menu = input("\nEnter Choice : ")
+
+                        match sub_menu:
+
+                            case "1":
+                                self.supplier_controller.insert_data()
+
+                            # case "2":
+                            #     self.category_controller.view_categories()
+
+                            # case "3":
+                            #     self.category_controller.update_category()
+
+                            # case "4":
+                            #     self.category_controller.delete_category()
+
+                            # case "5":
+                            #     self.category_controller.search_category()
+
+                            # case "6":
+                            #     break
+
+                            case _:
+                                print("Invalid Choice")
 
                 # ===========================
                 # CUSTOMER MANAGEMENT
