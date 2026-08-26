@@ -162,8 +162,8 @@ class AdminController:
                             case "1":
                                 self.supplier_controller.insert_data()
 
-                            # case "2":
-                            #     self.category_controller.view_categories()
+                            case "2":
+                                self.supplier_controller.view_suppliers()
 
                             # case "3":
                             #     self.category_controller.update_category()

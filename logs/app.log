@@ -219,3 +219,38 @@ Traceback (most recent call last):
 AttributeError: 'dict' object has no attribute 'supplier_name'
 2026-08-24 23:33:09 | [Login] | INFO | SUCCESS: login returned <app.models.users.Users object at 0x10aee7cb0>
 2026-08-24 23:33:58 | [Supplier_insert] | INFO | SUCCESS: insert_supplier returned None
+2026-08-24 23:59:48 | [Login] | INFO | SUCCESS: login returned <app.models.users.Users object at 0x1096e3cb0>
+2026-08-25 00:04:15 | [Login] | INFO | SUCCESS: login returned <app.models.users.Users object at 0x10960fcb0>
+2026-08-25 00:04:43 | [Supplier_insert] | INFO | SUCCESS: insert_supplier returned None
+2026-08-26 20:22:10 | [Login] | INFO | SUCCESS: login returned <app.models.users.Users object at 0x108cfbcb0>
+2026-08-26 20:22:16 | [Fetch_Suppliers] | INFO | SUCCESS: fetch_suppliers_data returned <app.repositories.supplier_repository.Supplier_Reposiotry.SupplierRepository object at 0x108d19090>
+2026-08-26 20:24:19 | [Login] | INFO | SUCCESS: login returned <app.models.users.Users object at 0x108c03cb0>
+2026-08-26 20:24:21 | [Fetch_Suppliers] | ERROR | FAILED: fetch_suppliers_data - Error: tuple indices must be integers or slices, not str
+Traceback (most recent call last):
+  File "/Users/muhammadzaryabkhan/Desktop/inventory_management_system_python/app/utils/logger/custom_logger.py", line 30, in wrapper
+    result = funct(*args, **kwargs)
+  File "/Users/muhammadzaryabkhan/Desktop/inventory_management_system_python/app/services/Supplier_Service/Supplier_Service.py", line 32, in fetch_suppliers_data
+    raise e
+  File "/Users/muhammadzaryabkhan/Desktop/inventory_management_system_python/app/services/Supplier_Service/Supplier_Service.py", line 27, in fetch_suppliers_data
+    suppliers_data_fetch = self.supplier_repository.view_supplier()
+  File "/Users/muhammadzaryabkhan/Desktop/inventory_management_system_python/app/repositories/supplier_repository/Supplier_Reposiotry.py", line 58, in view_supplier
+    supplier_id = row["supplier_id"],
+                  ~~~^^^^^^^^^^^^^^^
+TypeError: tuple indices must be integers or slices, not str
+2026-08-26 20:26:12 | [Login] | INFO | SUCCESS: login returned <app.models.users.Users object at 0x1091ffcb0>
+2026-08-26 20:26:14 | [Fetch_Suppliers] | ERROR | FAILED: fetch_suppliers_data - Error: tuple indices must be integers or slices, not str
+Traceback (most recent call last):
+  File "/Users/muhammadzaryabkhan/Desktop/inventory_management_system_python/app/utils/logger/custom_logger.py", line 30, in wrapper
+    result = funct(*args, **kwargs)
+  File "/Users/muhammadzaryabkhan/Desktop/inventory_management_system_python/app/services/Supplier_Service/Supplier_Service.py", line 32, in fetch_suppliers_data
+    raise e
+  File "/Users/muhammadzaryabkhan/Desktop/inventory_management_system_python/app/services/Supplier_Service/Supplier_Service.py", line 27, in fetch_suppliers_data
+    suppliers_data_fetch = self.supplier_repository.view_supplier()
+  File "/Users/muhammadzaryabkhan/Desktop/inventory_management_system_python/app/repositories/supplier_repository/Supplier_Reposiotry.py", line 58, in view_supplier
+    supplier_id = row['supplier_id'],
+                  ~~~^^^^^^^^^^^^^^^
+TypeError: tuple indices must be integers or slices, not str
+2026-08-26 20:28:35 | [Login] | INFO | SUCCESS: login returned <app.models.users.Users object at 0x10b793cb0>
+2026-08-26 20:28:36 | [Fetch_Suppliers] | INFO | SUCCESS: fetch_suppliers_data returned [<app.models.supplier.Supplier object at 0x10b8086e0>, <app.models.supplier.Supplier object at 0x10b7ad1d0>]
+2026-08-26 20:41:17 | [Login] | INFO | SUCCESS: login returned <app.models.users.Users object at 0x10a0341a0>
+2026-08-26 20:41:18 | [Fetch_Suppliers] | INFO | SUCCESS: fetch_suppliers_data returned [<app.models.supplier.Supplier object at 0x10a034ad0>, <app.models.supplier.Supplier object at 0x10930e710>]

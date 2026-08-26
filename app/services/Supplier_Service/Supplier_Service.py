@@ -13,8 +13,20 @@ class SupplierService:
         try:
             self.supplier_repository.insert_supplier(supplier_data)
 
-            print("Category Saved Successfully")
+            print("Supplier Data Insert Successfully")
 
         except Exception as e:
 
+            raise e
+
+    @Logger.log_activity(module_name="Fetch_Suppliers")
+    def fetch_suppliers_data(self):
+
+        try:
+
+            suppliers_data_fetch = self.supplier_repository.view_supplier()
+
+            return suppliers_data_fetch
+
+        except Exception as e:
             raise e
